@@ -2,12 +2,13 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, pkgs, ... }:
+{ config, pkgs, inputs, ... }:
 
 {
   imports =
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
+      inputs.home-manager.nixosModules.home-manager
     ];
 
   # Bootloader.
@@ -91,7 +92,15 @@
     #  thunderbird
     ];
   };
-
+  
+  home-manager = {
+    #also pass inputs to home-manager modules
+    extraSpecialArgs = { inherit inputs; };
+    users = {
+      glenn = import ../home-manager/home.nix;
+    };
+   };
+   
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
 
@@ -125,6 +134,7 @@
   bluez
   kitty
   lf
+  home-manager
   #  wget
   ];
   
@@ -144,7 +154,7 @@
   # List services that you want to enable:
 
   # Enable the OpenSSH daemon.
-  services.openssh.enable = true;
+  #services.openssh.enable = true;
   #try help bluetooth
   services.blueman.enable = true;
 
