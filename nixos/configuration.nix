@@ -135,6 +135,8 @@
   kitty
   lf
   home-manager
+  cmake
+  clang
   #  wget
   ];
   
