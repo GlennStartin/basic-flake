@@ -1,12 +1,7 @@
 # This is your home-manager configuration file
 # Use this to configure your home environment (it replaces ~/.config/nixpkgs/home.nix)
-{
-  inputs,
-  lib,
-  config,
-  pkgs,
-  ...
-}: 
+{  inputs,  lib,  config,  pkgs,  ...}:
+
 {
   # You can import other home-manager modules here
   imports = [
@@ -39,9 +34,14 @@
     };
   };
 
+# targets.genericLinux.enable = true; #Enable this on non-NixOS
+  # home.packages = with pkgs; [ steam ];
   home = {
     username = "glenn";
     homeDirectory = "/home/glenn";
+    packages = with pkgs; [
+      pkgs.hello
+    ];
   };
 
   # Add stuff for your user as you see fit:
@@ -52,7 +52,6 @@
     vimdiffAlias = true;
     extraLuaConfig = ''${builtins.readFile ../nvim/init.lua}'';
   };
-  # home.packages = with pkgs; [ steam ];
 
   # Enable home-manager and git
   programs.home-manager.enable = true;
