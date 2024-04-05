@@ -165,6 +165,7 @@
   opengl.enable = true;
   nvidia.modesetting.enable = true;
   bluetooth.enable = true;
+  keyboard.zsa.enable = true;
   };
 
   # Open ports in the firewall.
