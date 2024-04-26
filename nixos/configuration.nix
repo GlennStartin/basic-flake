@@ -138,6 +138,13 @@
   cmake
   clang
   #  wget
+  #for hyprland
+  waybar
+  mako
+  wl-clipboard
+  libnotify
+  swww
+  rofi-wayland
   ];
   
   fonts.fontDir.enable = true;
