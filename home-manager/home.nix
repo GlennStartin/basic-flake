@@ -34,7 +34,7 @@
     };
   };
 
-# targets.genericLinux.enable = true; #Enable this on non-NixOS
+  # targets.genericLinux.enable = true; #Enable this on non-NixOS
   # home.packages = with pkgs; [ steam ];
   home = {
     username = "glenn";
@@ -54,12 +54,18 @@
   };
 
   # Enable home-manager and git
-  programs.home-manager.enable = true;
+  # disable hyprland until I have a decent stable setup that I know I want
+  # programs.home-manager.enable = true;
   programs.git = { 
     enable = true;
     userName = "GlennStartin";
     userEmail = "glenn.startin@gmail.com";
     };
+
+  wayland.windowManager.hyprland = {
+    # allow home-manager to configure hyprland
+    enable = true;
+  };
 
   # Nicely reload system units when changing configs
   systemd.user.startServices = "sd-switch";
