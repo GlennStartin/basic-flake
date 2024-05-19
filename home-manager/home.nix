@@ -52,20 +52,19 @@
     vimdiffAlias = true;
     extraLuaConfig = ''${builtins.readFile ../nvim/init.lua}'';
   };
-
-  # Enable home-manager and git
-  # disable hyprland until I have a decent stable setup that I know I want
-  # programs.home-manager.enable = true;
   programs.git = { 
     enable = true;
     userName = "GlennStartin";
     userEmail = "glenn.startin@gmail.com";
     };
 
-  wayland.windowManager.hyprland = {
-    # allow home-manager to configure hyprland
-    enable = true;
-  };
+  # Enable home-manager and git
+  # disable hyprland until I have a decent stable setup that I know I want
+  # programs.home-manager.enable = true;
+  #wayland.windowManager.hyprland = {
+  #  # allow home-manager to configure hyprland
+  #  enable = true;
+  #};
 
   # Nicely reload system units when changing configs
   systemd.user.startServices = "sd-switch";
